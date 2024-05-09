@@ -1,11 +1,11 @@
 package database
 
 import (
-   . "prakerja-session-3/data"
+   . "prakerja-session-3/datatype"
 )
 
 
-var Database []Biodata = [] Biodata{
+var Database = [] Biodata{
 	{
     Nama		: "Mukharom",
 	Alamat		: "Brebes",

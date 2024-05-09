@@ -2,15 +2,15 @@ package main
 
 
 import (
-	"fmt"
+	//"fmt"
 	"prakerja-session-3/handler"
-	"prakerja-session-3/app"
+	//"prakerja-session-3/app"
 )
 
 func main(){
+ //    d,c = handler.Get()
+	// fmt.Printf("%d,%d",d,c)
 
-   	fmt.Println(handler.Get())
-   	app.Run()
-
+	handler.ShowDatabase()
 
 }
