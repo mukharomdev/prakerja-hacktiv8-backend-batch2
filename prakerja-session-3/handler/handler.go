@@ -40,10 +40,10 @@ func getArguments() (arg int,lenArgs int,lenDb int){
 
 func ConnectDatabase(arg int){
 
-			fmt.Printf("Nama 		: %s\n",Database[arg-1].Nama)
-			fmt.Printf("Alamat  	: %s\n",Database[arg-1].Alamat)
-			fmt.Printf("Pekerjaan 	: %s\n",Database[arg-1].Pekerjaan)
-			fmt.Printf("Alasan 		: %s\n",Database[arg-1].Alasan)
+			fmt.Printf("Nama 			: %s\n",Database[arg-1].Nama)
+			fmt.Printf("Alamat  		: %s\n",Database[arg-1].Alamat)
+			fmt.Printf("Pekerjaan 		: %s\n",Database[arg-1].Pekerjaan)
+			fmt.Printf("Alasan ikut kelas golang: %s\t\t\n",Database[arg-1].Alasan)
 }
 
 

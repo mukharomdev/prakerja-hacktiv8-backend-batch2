@@ -24,4 +24,18 @@ var Database = [] Biodata{
 	Pekerjaan	: "Programmer",
 	Alasan		: "Menambah relasi Programmer",
 	},
+	{
+	Nama		: "Meong",
+	Alamat		: "Surabaya",
+	Pekerjaan	: "Petani",
+	Alasan		: "Menambah Keterampilan dalam pemrograman",
+	},
+	{
+	Nama		: "Enok",
+	Alamat		: "Serang",
+	Pekerjaan	: "IRT",
+	Alasan		: "Menambah relasi dan ilmu ",
+	},
+
+
 }
