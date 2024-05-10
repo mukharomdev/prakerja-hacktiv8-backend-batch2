@@ -16,7 +16,7 @@ type Biodata struct{
 
 type Arguments struct{
 	ListArgs []string
-	Arg   	 string
+	Arg   	 []string
 	LenArg   int
 	LenDb    int
 }

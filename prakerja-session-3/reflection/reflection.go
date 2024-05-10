@@ -14,6 +14,8 @@ func Ref(c any){
 	 	fmt.Println(d.Type(),d.Int())
 	 case reflect.String:
 	 	fmt.Println(d.Type(),d.String())
+	 case reflect.Interface:
+	 	fmt.Println(d.Type(),d.Interface())
 	 default:
 	 	fmt.Println("Bukan String dan Integer")
 	 }
