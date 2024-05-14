@@ -1,1 +1,19 @@
+
 GET http://localhost:9001/products
+
+PUT http://localhost:9001/products?id=1
+
+{
+	"nama":"KOKO",
+	"price":"50000000"
+}
+
+
+
+
+
+
+
+
+
+DELETE http://localhost:9001/products?id=5
