@@ -1,0 +1,35 @@
+package main
+
+import "errors"
+
+func ValidName(name string) error {
+	if len(name) < 5 {
+		return errors.New("invalid name")
+	}
+
+	return nil
+}
+
+type MyNumber int
+
+func (mn MyNumber) Calc(a int, b int) int {
+	return a + b
+}
+
+func main() {
+	var a int = 10
+
+	var b MyNumber = MyNumber(a)
+
+	var c uint8 = 20
+
+	var d int32 = int32(c)
+
+	var dynamic interface{} = 10
+
+	dynamic = ""
+
+	e, ok := dynamic.(int)
+
+	_, _, _, _, _ = a, b, d, e, ok
+}

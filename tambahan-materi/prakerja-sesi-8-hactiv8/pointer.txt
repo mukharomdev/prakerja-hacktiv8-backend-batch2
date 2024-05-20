@@ -1,0 +1,69 @@
+package main
+
+import (
+	"fmt"
+)
+
+func ChangeNumber(num *int) {
+	fmt.Println("num:", num)
+	*num = 200
+}
+
+type Person struct {
+	Name string
+}
+
+type CustomString string
+
+func (p *Person) ChangeName(newName string) {
+	p.Name = newName
+}
+
+func (cs *CustomString) ChangeString(newValue string) {
+	*cs = CustomString(newValue)
+}
+
+func main() {
+
+	var r CustomString = "Hello"
+
+	r.ChangeString("Hai")
+
+	fmt.Println("r =>", r)
+
+	var p Person = Person{
+		Name: "Johan",
+	}
+
+	p.ChangeName("Albert")
+
+	fmt.Printf("%+v\n", p)
+
+	var a int = 10
+
+	fmt.Println("a:", &a)
+
+	ChangeNumber(&a)
+
+	fmt.Println(a)
+
+	var name string = "John"
+
+	var nickName *string = &name
+
+	// var p1 Person = Person{
+	// 	Name: "Johan",
+	// }
+
+	if nickName != nil {
+		fmt.Println(*nickName)
+	}
+
+	// *nickName = "Andre"
+
+	// fmt.Println(name, *nickName)
+
+	// fmt.Println(&name, nickName)
+
+	_, _ = name, nickName
+}
