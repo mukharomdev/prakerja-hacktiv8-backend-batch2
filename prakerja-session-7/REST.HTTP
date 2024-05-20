@@ -1,0 +1,29 @@
+
+GET http://localhost:8001/products
+
+
+POST http://localhost:8001/products
+
+
+{
+	"name":"baju tidur",
+	"price": 80000
+}
+
+
+PUT http://localhost:8001/products/1
+
+{
+	"name":"Baju santai",
+	"price": 90000
+}
+
+DELETE http://localhost:8001/products/1
+
+
+POST http://localhost:8001/users/register
+
+{
+	"email":"yodharishang@gmail.com",
+	"password":"1234567"
+}
