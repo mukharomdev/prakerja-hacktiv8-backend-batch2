@@ -39,3 +39,30 @@ func TestUserServiceAdd(t *testing.T){
 	assert.Equal(t,respons.Username,useres.Username)
 
 }
+
+
+func TestUserServiceFindByUserName(t *testing.T){
+	config.Init()
+	database.StartDatabase()
+
+	var userLoginres models.UserLoginRes
+	var userLoginreq = models.UserLoginReq{
+		Email 		: "yodhar@gmail.com",
+		Password 	: "yodharishang",
+
+	}
+
+
+
+    var services service.UserService
+	respons , err := services.FindByUserName(userLoginreq)
+
+	err := bcrypt.CompareHashAndPassword([]byte(respons.Password), []byte(userLoginreq.Password))
+
+ 	userLoginres = models.UserLoginRes{
+ 		Password:respons.Password,
+ 	}
+	assert.NoError(t,err)
+	assert.Equal(t,respons.Password,userLoginres)
+
+}

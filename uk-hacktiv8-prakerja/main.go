@@ -1,11 +1,15 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
+	"github.com/gin-gonic/gin"
+
+
 	"uk-hacktiv8-prakerja/config"
-	"uk-hacktiv8-prakerja/models"
+	//"uk-hacktiv8-prakerja/models"
 	"uk-hacktiv8-prakerja/database"
-	repo "uk-hacktiv8-prakerja/repositories/postgres"
+	"uk-hacktiv8-prakerja/routers"
+	//repo "uk-hacktiv8-prakerja/repositories/postgres"
 )
 
 func main(){
@@ -13,19 +17,17 @@ func main(){
 
 	database.StartDatabase()
 
-	var user *models.User
+	router := gin.Default()
 
-	user = &models.User{
-		Email:"pelatge@gmail.com",
-		Password:"yodharishang",
-	}
 
-	r := &repo.UserRepository{}
-	v,err := r.Store(*user)
+	server := routers.UserRouter(router)
 
-	if err != nil{
-		fmt.Printf("%v===%v",v,err)
-	}
+
+	server.Run(":8000")
+
+
+
+
 
 
 
