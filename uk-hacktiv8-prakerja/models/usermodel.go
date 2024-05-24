@@ -9,7 +9,7 @@ import (
 
 
 type User struct{
-	ID 			uint 		`gorm:"primary_key" json:"id,omitempty"`
+	ID 			uint 		`gorm:"primary_key;autoIncrement" json:"id,omitempty"`
 	Username 	string 		`gorm:"uniqueIndex;not null" json:"username,omitempty"`
 	Email 		string 		`gorm:"uniqueIndex;not null;size > 256" json:"email,omitempty"`
 	Password 	string 		`gorm:"uniqueIndex;not null" json:"password,omitempty"`
@@ -23,9 +23,8 @@ type User struct{
 // request
 type UserLoginReq struct{
 	Email 		string 	`json:"email"`
-	Username 	string 	`json:"username"`
-	Password 	string 		`json:"password"`
-	Age 		uint 		`json:"age"`
+	Password 	string 	`json:"password"`
+
 }
 
 
@@ -34,7 +33,7 @@ type UserLoginReq struct{
 
 // respon POST /users/login
 type UserLoginRes struct{
-	Token 	string `json:"token"`
+	Password 	string `json:"token"`
 }
 
 
@@ -76,7 +75,7 @@ type UserRegisterRes struct{
 }
 
 
-func NewUser(uslog *UserLoginReq) *User {
+func NewUser(uslog *UserRegisterReq) *User {
 	return &User{
 		Email:uslog.Email,
 		Username:  uslog.Username,
