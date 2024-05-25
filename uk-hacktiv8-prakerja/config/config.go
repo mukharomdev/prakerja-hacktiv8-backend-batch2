@@ -19,6 +19,8 @@ type App struct {
 	DatabaseMaxIdleConns    int    `mapstructure:"db_max_idle_conns"`
 	DatabaseMaxOpensConns   int    `mapstructure:"db_max_opens_conns"`
 	DatabaseConnMaxLifetime int64  `mapstructure:"db_conn_max_lifetime"`
+	UserToken 				string `mapstructure:"user_token"`
+	SecretKey 				string `mapstructure:"secret_key"`
 }
 
 var envConfig *viper.Viper
