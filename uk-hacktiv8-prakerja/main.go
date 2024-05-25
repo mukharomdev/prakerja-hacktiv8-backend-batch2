@@ -20,7 +20,7 @@ func main(){
 	router := gin.Default()
 
 
-	server := routers.UserRouter(router)
+	server := routers.UserRouters(router)
 
 
 	server.Run(":8000")

@@ -6,16 +6,19 @@ import(
 	"github.com/gin-gonic/gin"
 
 	"uk-hacktiv8-prakerja/controllers"
+	"uk-hacktiv8-prakerja/middlewares"
 )
 
 var controller controllers.UserController
 
-func UserRouter(engine *gin.Engine)*gin.Engine{
+func UserRouters(engine *gin.Engine)*gin.Engine{
 
-	router := engine.Group("users")
+	UserRouter := engine.Group("users")
 
-	router.POST("/register",controller.Register)
-	router.POST("/login",controller.Login)
+	UserRouter.POST("/register",controller.Register)
+	UserRouter.POST("/login",controller.Login)
+	UserRouter.PUT("/:userId",middlewares.UserAuthentication,controller.Update)
+	UserRouter.DELETE("/",controller.Delete)
 
 	return engine
 }

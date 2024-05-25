@@ -50,8 +50,11 @@ func(s *UserService)FindByUserName(usreq models.UserLoginReq)(*models.UserLoginR
 	for _,v := range users{
 		if v.Email == usreq.Email{
 			userloginres.Password = v.Password
+			userloginres.ID		  = v.ID
 		}
 	}
 
 	return &userloginres,nil
 }
+
+

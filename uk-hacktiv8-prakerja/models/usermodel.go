@@ -33,13 +33,24 @@ type UserLoginReq struct{
 
 // respon POST /users/login
 type UserLoginRes struct{
+	Email 		string `json:"email"`
 	Password 	string `json:"token"`
+	ID 		 	uint   `json:"id"`
+
 }
 
 
+// request PUT /users
+
+type UserUpdateReq struct{
+	Username 	string `json:"username"`
+	Email 		string  `json:"email"`
+
+}
+
 // respon PUT /users
 
-type UserLoginUpdateRes struct{
+type UserUpdateRes struct{
 	ID 			uint 		`json:"id"`
 	Username 	string 		`json:"username"`
 	Email 		string 		`json:"email"`
@@ -60,6 +71,7 @@ type UserLoginDelRes struct{
 }
 
 
+// request PUT /users/Register
 type UserRegisterReq struct{
 	Username 	string 		`json:"username,omitempty"`
 	Email 		string 		`json:"email,omitempty"`

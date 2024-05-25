@@ -3,6 +3,8 @@ package controllers
 
 import(
 	"net/http"
+	//"log"
+	"strconv"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
 	"gorm.io/gorm"
@@ -12,6 +14,7 @@ import(
 	"uk-hacktiv8-prakerja/models"
 	"uk-hacktiv8-prakerja/utils"
 	"uk-hacktiv8-prakerja/utils/internal_jwt"
+	//"uk-hacktiv8-prakerja/config"
 )
 
 
@@ -95,13 +98,13 @@ func(c *UserController)Login(ctx *gin.Context){
 
 		}
 
-		user := models.User{
-			Email: userLogreq.Email,
-		}
+
+
+
 
 		claim := jwt.MapClaims{
-			"email": user.Email,
-			"id":    user.ID,
+			"email": userLogreq.Email,
+			"id":    respons.ID,
 		}
 
 		token := internal_jwt.GenerateToken(claim)
@@ -110,6 +113,55 @@ func(c *UserController)Login(ctx *gin.Context){
 			Password : token,
 		}
 
+      //log.Println(respons)
 
- ctx.JSON(http.StatusOK,Token)
+ ctx.JSON(http.StatusOK,map[string]interface{}{"token":Token.Password},)
+}
+
+
+func(c *UserController)Update(ctx *gin.Context){
+	paramId,_ := strconv.Atoi(ctx.Param("userId"))
+	userId, ok := ctx.MustGet("userId").(float64)
+
+	var userUpdatereq models.UserUpdateReq
+
+	err := ctx.ShouldBindBodyWithJSON(&userUpdatereq)
+
+	if err != nil {
+		ctx.AbortWithStatusJSON(http.StatusUnprocessableEntity, map[string]string{
+				"errorMessage": "invalid request body",
+			})
+			return
+		}
+
+
+
+	if !ok {
+		ctx.AbortWithStatusJSON(http.StatusInternalServerError, map[string]string{
+					"errorMesssage": "something went wrong",
+		})
+		return
+		}
+
+   if float64(paramId) != userId{
+   		ctx.AbortWithStatusJSON(http.StatusInternalServerError, map[string]string{
+					"errorMesssage": "no id you search",
+		})
+		return
+		}
+
+
+
+
+
+
+
+
+
+ctx.JSON(http.StatusOK,map[string]interface{}{"controller update":userId},)
+}
+
+func(c *UserController)Delete(ctx *gin.Context){
+
+ctx.JSON(http.StatusOK,"controller delete")
 }

@@ -31,6 +31,7 @@ func ParseToken(stringToken string) (*jwt.Token, error) {
 
 func GenerateToken(jwtClaim jwt.MapClaims) string {
 	var secretKey  = config.GetConfig().SecretKey
+
 	parseToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwtClaim)
 	signedToken, _ := parseToken.SignedString([]byte(secretKey))
 
