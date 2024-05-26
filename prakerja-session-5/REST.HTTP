@@ -1,7 +1,7 @@
 
 GET http://localhost:9001/products
 
-PUT http://localhost:9001/products?id=1
+POST http://localhost:9001/products?id=1
 
 {
 	"nama":"KOKO",
