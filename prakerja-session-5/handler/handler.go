@@ -98,23 +98,30 @@ func UpdateProducts(w http.ResponseWriter,r *http.Request){
 	for index,value := range Products {
 
 				if value.ID == id {
-					limiter++
+					limiter = index + value.ID
 					Products[index]  = product
 		 			Products[index].NAME	= product.NAME
 		 			Products[index].PRICE	= product.PRICE
 					break
 				}
+				// goto LIMIT
 
-				if limiter >= 1 {
-			    	http.Error(w, "not allowed ", 422)
-			    	return
-			    }
+				// LIMIT:
+				// if limiter > value.ID {
+	   // 				http.Error(w, "not allowed ", 422)
+	   // 				return
+				// }
 
-			    if len(Products) == 0 {
-			    		http.Error(w, "Data not found", 404)
-				    return
-			   	}
+			    // if len(Products) == 0 {
+			    // 		http.Error(w, "Data not found", 404)
+				   //  return
+			   	// }
 	}
+   	if limiter > id {
+	   	http.Error(w, "not allowed ", 422)
+	   	return
+	}
+
 
 	if len(Products) == 0{
 		http.Error(w,"Tak ada data",404)

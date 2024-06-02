@@ -22,6 +22,8 @@ type UserController struct{
 	Service service.UserService
 }
 
+// REGISTER
+
 func(c *UserController)Register(ctx *gin.Context){
 	var userRegReq models.UserRegisterReq
 
@@ -54,11 +56,10 @@ func(c *UserController)Register(ctx *gin.Context){
 
     }
 
-
-
-
 ctx.JSON(http.StatusCreated,respons)
 }
+
+// LOGIN
 
 func(c *UserController)Login(ctx *gin.Context){
 	var userLogreq models.UserLoginReq
@@ -73,6 +74,7 @@ func(c *UserController)Login(ctx *gin.Context){
 		}
 
 		respons,err := c.Service.FindByUserName(userLogreq)
+		//log.Println(*respons)
 
 		if err != nil {
 			if err == gorm.ErrRecordNotFound {
@@ -89,18 +91,16 @@ func(c *UserController)Login(ctx *gin.Context){
 
 		}
 
+        cekPassword := utils.CheckPasswordHash(userLogreq.Password,respons.Password)
+        //log.Println(cekPassword)
 
-		if !utils.CheckPasswordHash(userLogreq.Password,respons.Password){
+		if !cekPassword {
 			ctx.AbortWithStatusJSON(http.StatusUnauthorized, map[string]string{
 				"error Message": "Unauthorized request",
 			})
 			return
 
 		}
-
-
-
-
 
 		claim := jwt.MapClaims{
 			"email": userLogreq.Email,
@@ -118,6 +118,7 @@ func(c *UserController)Login(ctx *gin.Context){
  ctx.JSON(http.StatusOK,map[string]interface{}{"token":Token.Password},)
 }
 
+// UPDATE
 
 func(c *UserController)Update(ctx *gin.Context){
 	paramId,_ := strconv.Atoi(ctx.Param("userId"))
@@ -150,18 +151,40 @@ func(c *UserController)Update(ctx *gin.Context){
 		return
 		}
 
+	respons,err := c.Service.Update(userUpdatereq,uint(paramId))
 
+	if err != nil{
+		ctx.AbortWithStatusJSON(http.StatusUnprocessableEntity,map[string]interface{}{
+			"error message": err.Error(),
+		})
+	}
+	//log.Println(respons)
 
-
-
-
-
-
-
-ctx.JSON(http.StatusOK,map[string]interface{}{"controller update":userId},)
+ctx.JSON(http.StatusOK,respons)
 }
 
-func(c *UserController)Delete(ctx *gin.Context){
 
-ctx.JSON(http.StatusOK,"controller delete")
+// DELETE
+
+func(c *UserController)Delete(ctx *gin.Context){
+	userId, ok := ctx.MustGet("userId").(float64)
+
+	if !ok {
+		ctx.AbortWithStatusJSON(http.StatusInternalServerError, map[string]string{
+					"error Messsage": "something went wrong",
+		})
+		return
+		}
+	err := c.Service.Delete(uint(userId))
+
+	if err != nil {
+		ctx.AbortWithStatusJSON(http.StatusInternalServerError, map[string]string{
+					"error Messsage": "something went wrong",
+		})
+		return
+		}
+
+ctx.JSON(http.StatusOK,map[string]string{
+	"message":"your account has been successfully deleted",
+},)
 }

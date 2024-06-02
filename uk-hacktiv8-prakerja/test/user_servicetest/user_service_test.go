@@ -5,7 +5,7 @@ import(
 	"testing"
 	"github.com/stretchr/testify/assert"
 	//"errors"
-
+    "golang.org/x/crypto/bcrypt"
 
 	"uk-hacktiv8-prakerja/models"
 	"uk-hacktiv8-prakerja/service"
@@ -45,7 +45,7 @@ func TestUserServiceFindByUserName(t *testing.T){
 	config.Init()
 	database.StartDatabase()
 
-	var userLoginres models.UserLoginRes
+	//var userLoginres models.UserLoginRes
 	var userLoginreq = models.UserLoginReq{
 		Email 		: "yodhar@gmail.com",
 		Password 	: "yodharishang",
@@ -57,12 +57,37 @@ func TestUserServiceFindByUserName(t *testing.T){
     var services service.UserService
 	respons , err := services.FindByUserName(userLoginreq)
 
-	err := bcrypt.CompareHashAndPassword([]byte(respons.Password), []byte(userLoginreq.Password))
+	validity := bcrypt.CompareHashAndPassword([]byte(respons.Password), []byte(userLoginreq.Password))
 
- 	userLoginres = models.UserLoginRes{
- 		Password:respons.Password,
- 	}
-	assert.NoError(t,err)
-	assert.Equal(t,respons.Password,userLoginres)
+ 	// userLoginres = models.UserLoginRes{
+ 	// 	Password:respons.Password,
+ 	// }
+ 	assert.NoError(t,validity)
+	assert.Error(t,err)
+	assert.Equal(t,respons.Password,userLoginreq.Password)
+
+}
+
+
+
+func TestUserServiceUpdate(t *testing.T){
+	config.Init()
+	database.StartDatabase()
+
+	//var userLoginres models.UserLoginRes
+	var userUpdateReq = models.UserUpdateReq{
+		Email 		: "mukharomdev@gmail.com",
+		Username 	: "mukharomdev",
+
+	}
+
+
+
+    var services service.UserService
+	respons , err := services.Update(userUpdateReq,1)
+    t.Log(respons)
+
+    assert.Error(t,err)
+
 
 }

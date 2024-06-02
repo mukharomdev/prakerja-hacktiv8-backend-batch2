@@ -34,7 +34,7 @@ func (s *UserRepository) Delete(id uint) (models.User, error) {
 			return models.User{}, err
 		}
 
-		err = db.Delete(&n).Error
+		err = db.Delete(&n,id).Error
 		if err != nil {
 			return models.User{}, fmt.Errorf("tidak bisa menghapus data: %v", err)
 		}
@@ -47,27 +47,29 @@ func (s *UserRepository) Delete(id uint) (models.User, error) {
 
 func (s *UserRepository) Update(p models.User) error {
 	db := database.GetDatabase()
-	if s.IsExist(p.ID){
-		err := db.Save(&p).Error
+	//err := db.Save(&p).Error
+	err := db.Model(&p).Where("id = ?",p.ID).Updates(&p)
 		if err != nil {
 			return fmt.Errorf("tidak bisa mengupdate user di database: %v", err)
 		}
-	}
+
 
 
 	return nil
 }
 
-func (s *UserRepository) Get(id uint) (models.User, error) {
+func (s *UserRepository) Get(id uint) (*models.User, error) {
 	db := database.GetDatabase()
-	var p models.User
-	err := db.First(&p, id).Error
+	var user models.User
+
+	//err := db.First(&user, "id = ?", id).Error
+	err := db.Model(&user).First(&user, id).Error
 
 	if err != nil {
-		return models.User{}, fmt.Errorf("tidak dapat menemukan user dengan  id: %v", err)
+		return &models.User{},err
 	}
 
-	return p, nil
+	return &user, nil
 }
 
 func (s *UserRepository) GetAll() ([]models.User, error) {

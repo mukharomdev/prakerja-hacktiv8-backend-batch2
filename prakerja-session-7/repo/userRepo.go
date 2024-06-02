@@ -7,33 +7,67 @@ import (
 
 
 type UserRepo struct {
-	UserDb *gorm.DB
+	DB *gorm.DB
 }
 
 
-func(ur *UserRepo)Create(usr *models.UserReq)(*models.User,error){
-	newUser := models.User{
-		Email	:usr.Email,
-		Password:usr.Password,
-	}
-	err := ur.UserDb.Create(&newUser)
+func (usr *UserRepo) IsExist(id uint)bool{
+	User:= models.User{ID:id}
 
-	if err.Error!=nil {
-		return nil,err.Error
-	}
-	return &newUser,nil
+	result:=usr.DB.Find(&User)
+
+	return result.RowsAffected > 0
 }
 
-func(ur *UserRepo)FindByEmail(usr *models.UserReq)(*models.User,error){
-	userEmail := models.User{
-		Email : usr.Email,
-		Password:usr.Password,
+func (usr *UserRepo) GetMany()([]models.User,error){
+		var Users []models.User
+
+		result := usr.DB.Find(&Users)
+
+		if result.Error!=nil {
+
+			return nil,result.Error
+		}
+		return Users,nil
+}
+
+
+func (usr *UserRepo) Save(usrodReq *models.UserReq)(*models.User,error){
+	User := models.User{
+		Email: usrodReq.Email,
+		Password: usrodReq.Password,
 	}
 
-	err := ur.UserDb.First(&userEmail, "email = ?", userEmail.Email)
-	if err.Error!=nil {
-		return nil,err.Error
+	result := usr.DB.Create(&User)
+
+	if result.Error!=nil {
+		return nil,result.Error
 	}
-	return &userEmail,nil
+	return &User,nil
 }
+
+func (usr *UserRepo) Edit(id uint,UserReq *models.UserReq)(*models.User,error){
+	User:= models.User{
+		ID:id,
+	}
+	result:=usr.DB.Model(&User).Updates(UserReq)
+
+	if result.Error!=nil {
+
+		return nil,result.Error
+	}
+	return &User,nil
+
+
+}
+
+
+func (usr *UserRepo) Delete(id uint)error{
+
+	result := usr.DB.Delete(&models.User{ID:id})
+
+	return result.Error
+}
+
+
 

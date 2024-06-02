@@ -76,15 +76,16 @@ func TestUserRepositoryGet(t *testing.T){
 	config.Init()
 	database.StartDatabase()
 	// instaniasi model user
-	var user models.User
+	//var user models.User
 	// instaniasi struct userRepo
 	repos := &repo.UserRepository{}
     result,err:= repos.Get(1)
-    //t.Log(result)
+    t.Log(result)
 
     	// Mulai test
+
     assert.NoError(t, err)
-    assert.Equal(t,result.ID,user.ID,"harus berupa objek user")
+    assert.Equal(t,result.ID,uint(1),"harus berupa objek user")
 
 
 }

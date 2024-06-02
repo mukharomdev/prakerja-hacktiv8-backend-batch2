@@ -18,7 +18,7 @@ func UserRouters(engine *gin.Engine)*gin.Engine{
 	UserRouter.POST("/register",controller.Register)
 	UserRouter.POST("/login",controller.Login)
 	UserRouter.PUT("/:userId",middlewares.UserAuthentication,controller.Update)
-	UserRouter.DELETE("/",controller.Delete)
+	UserRouter.DELETE("/",middlewares.UserAuthentication,controller.Delete)
 
 	return engine
 }

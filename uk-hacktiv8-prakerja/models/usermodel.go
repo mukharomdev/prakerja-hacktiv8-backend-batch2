@@ -15,22 +15,16 @@ type User struct{
 	Password 	string 		`gorm:"uniqueIndex;not null" json:"password,omitempty"`
 	Age 		uint 		`gorm:"not null;check:age > 8" json:"age,omitempty"`
 	Created_at 	time.Time 	`gorm:"autoCreateTime" json:"created_at,omitempty"`
-	Updated_at 	time.Time 	`gorm:"autoUpdateTime:mili " json:"updated_at,omitempty"`
+	Updated_at 	time.Time 	`gorm:"autoUpdateTime " json:"updated_at,omitempty"`
 }
 
-// REQUEST
-
-// request
+// LOGIN
+// request POST /users/login
 type UserLoginReq struct{
 	Email 		string 	`json:"email"`
 	Password 	string 	`json:"password"`
 
 }
-
-
-
-// RESPON
-
 // respon POST /users/login
 type UserLoginRes struct{
 	Email 		string `json:"email"`
@@ -39,22 +33,23 @@ type UserLoginRes struct{
 
 }
 
-
-// request PUT /users
+//UPDATE
+// request PUT /users/:userId
 
 type UserUpdateReq struct{
 	Username 	string `json:"username"`
-	Email 		string  `json:"email"`
+	Email 		string `json:"email"`
+	ID 			uint   `json:"id"`
 
 }
 
-// respon PUT /users
+// respon PUT /users/:userId
 
 type UserUpdateRes struct{
 	ID 			uint 		`json:"id"`
 	Username 	string 		`json:"username"`
 	Email 		string 		`json:"email"`
-	Age 		string 		`json:"age"`
+	Age 		uint 		`json:"age"`
 	Updated_at 	time.Time 	`json:"updated_at"`
 
 }
@@ -70,7 +65,7 @@ type UserLoginDelRes struct{
 
 }
 
-
+//REGISTER
 // request PUT /users/Register
 type UserRegisterReq struct{
 	Username 	string 		`json:"username,omitempty"`
@@ -87,14 +82,14 @@ type UserRegisterRes struct{
 }
 
 
-func NewUser(uslog *UserRegisterReq) *User {
-	return &User{
-		Email:uslog.Email,
-		Username:  uslog.Username,
-		Password:uslog.Password,
-		Age:uslog.Age,
-	}
-}
+// func NewUser(uslog *UserRegisterReq) *User {
+// 	return &User{
+// 		Email:uslog.Email,
+// 		Username:  uslog.Username,
+// 		Password:uslog.Password,
+// 		Age:uslog.Age,
+// 	}
+// }
 
 // func NewUserWithID(id uint, name string, price float32) *User {
 // 	return &User{

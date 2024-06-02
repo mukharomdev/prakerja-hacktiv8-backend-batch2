@@ -2,10 +2,12 @@ package controllers
 
 import(
 	"net/http"
+	"github.com/gin-gonic/gin"
+	//"github.com/golang-jwt/jwt"
+    //"golang.org/x/crypto/bcrypt"
+
 	"prakerja-session-7/service"
 	"prakerja-session-7/models"
-	"github.com/gin-gonic/gin"
-	//"golang.org/x/crypto/bcrypt"
 	//"prakerja-session-7/utils/internal_jwt"
 	. "prakerja-session-7/helper"
 )
@@ -34,12 +36,9 @@ func(us *UserController)Route(){
 				"errorMessage": "invalid request body",
 			})
            }
-		//  user := models.UserReq{
-		//  	Email	:requestUser.Email,
-		//  	Password:requestUser.Password,
-		// }
 
-	response := us.UserService.Create(&requestUser)
+
+	response := us.UserService.Store(&requestUser)
 
 
 	SendUser(ctx,response)
@@ -61,9 +60,16 @@ func(us *UserController)Route(){
 		}
 
 
-		response := us.UserService.FindByEmail(&requestBody)
+		response := us.UserService.FindByPassword(&requestBody)
 
-		SendUser(ctx,response)
+		// Claims := jwt.MapClaims{
+		// 	"email":response.Email,
+		// 	"id"   :response.ID,
+		// }
+
+		// token := internal_jwt.GenerateToken(Claims)
+
+		SendUser(ctx,response.Success)
 
 	// })
 

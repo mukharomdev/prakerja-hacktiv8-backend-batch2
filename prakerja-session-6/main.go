@@ -63,7 +63,7 @@ func main(){
 	Router.Route()
 
 	// menjalankan server
-	PORT := ":8001"
+	PORT := ":8000"
     ServerGin.Run(PORT)
 
 }

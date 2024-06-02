@@ -18,9 +18,9 @@ type UserService struct {
 // 	}
 // }
 
-func(us *UserService)Create(user *models.UserReq)*models.UserResponse[models.User]{
+func(us *UserService)Store(user *models.UserReq)*models.UserResponse[models.User]{
 
-   result,err := us.UserRepo.Create(user)
+   result,err := us.UserRepo.Save(user)
 
 	if err!= nil {
 		return &models.UserResponse[models.User]{
@@ -45,8 +45,9 @@ func(us *UserService)Create(user *models.UserReq)*models.UserResponse[models.Use
 
 
 
-func(us *UserService)FindByEmail(user *models.UserReq)*models.UserResponse[models.User]{
-	result,err := us.UserRepo.FindByEmail(user)
+func(us *UserService)FindByPassword(user *models.UserReq)*models.UserResponse[models.User]{
+	users,err:= us.UserRepo.GetMany()
+
 
 		if err!= nil {
 		return &models.UserResponse[models.User]{
@@ -58,11 +59,20 @@ func(us *UserService)FindByEmail(user *models.UserReq)*models.UserResponse[model
 			},
 		}
 	}
+
+	var userPassword models.User
+
+	for _,v := range users{
+		if v.Email == user.Email{
+			userPassword.Email = v.Email
+			userPassword.ID = v.ID
+		}
+	}
 	return &models.UserResponse[models.User]{
 		Code:201,
 		Success:&models.UserResponseSuccess[models.User]{
 			Status:"success",
-			Data:*result,
+			Data:userPassword,
 		},
 		Error:nil,
 	}

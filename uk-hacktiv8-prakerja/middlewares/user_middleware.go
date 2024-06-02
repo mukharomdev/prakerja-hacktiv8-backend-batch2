@@ -31,7 +31,7 @@ func UserAuthentication(ctx *gin.Context) {
 
 	ctx.Set("userId", claim["id"])
 	//ctx.Set("example", "12345")
-
+	//log.Println(claim["id"])
 	ctx.Next()
 
 

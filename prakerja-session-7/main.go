@@ -40,7 +40,7 @@ func main(){
 	}
 
 	//Database migrate
-	db.AutoMigrate(&models.Product{})
+	db.AutoMigrate(&models.Product{},&models.User{})
 
 	// product repo
 	productRepo := &repo.ProductRepo{DB : db}
@@ -63,7 +63,7 @@ func main(){
     //User repo
     db.AutoMigrate(&models.User{})
 
-	userRepo := &repo.UserRepo{UserDb : db}
+	userRepo := &repo.UserRepo{DB : db}
 
 	// product service
 
