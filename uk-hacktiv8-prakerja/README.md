@@ -5,6 +5,11 @@
 ./reflex -s -r '\.go$$' go run main.go
 ```
 
+```terminal
+air
+```
+
+
 
 # Paket pihak ketiga
 ```ternminal
@@ -17,3 +22,5 @@ go get github.com/gin-gonic/gin\
        github.com/stretchr/testify
 
 ```
+
+
