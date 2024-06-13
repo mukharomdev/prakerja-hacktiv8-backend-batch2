@@ -1,0 +1,627 @@
+{
+    "info": {
+        "name": "RESTer",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-10",
+                    "name": "Hello"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-20",
+                    "name": "Hello"
+                }
+            ]
+        },
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/auth/login",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"identity\": \"ender\",\n    \"password\": \"ender\"\n}"
+                        }
+                    },
+                    "id": "rester-9",
+                    "name": "Login"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/auth/login",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"identity\": \"jury2\",\n    \"password\": \"12345678\"\n}"
+                        }
+                    },
+                    "id": "rester-15",
+                    "name": "Login"
+                }
+            ]
+        },
+        {
+            "name": "Gin-Learn",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8000/cars",
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"brand\":\"mitsubishi\",\n    \"model\":\"pajero\",\n    \"price\":\"10000000\"\n}"
+                        }
+                    },
+                    "id": "rester-32",
+                    "name": "CreatCar"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8000/cars/c1",
+                        "method": "DELETE",
+                        "header": []
+                    },
+                    "id": "rester-34",
+                    "name": "DeleteCar"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8000/cars/c1",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-31",
+                    "name": "GetCar"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8000/cars/c1",
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"brand\":\"mitsubishi\",\n    \"model\":\"pajero\",\n    \"price\":\"1\"\n}"
+                        }
+                    },
+                    "id": "rester-33",
+                    "name": "UpdateCar"
+                }
+            ]
+        },
+        {
+            "name": "Hactiv8",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8080/register",
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\":\"yodhooooa@gmail.com\",\n  \"password\":\"yodhoooarishang\"\n }"
+                        }
+                    },
+                    "id": "rester-30",
+                    "name": "Create"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/students?id=1",
+                        "method": "DELETE",
+                        "header": []
+                    },
+                    "id": "rester-28",
+                    "name": "Delete"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/students",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-27",
+                    "name": "Get"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8080/students?id=1",
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n \"name\":\"wasjan\",\n \"age\":5\n }"
+                        }
+                    },
+                    "id": "rester-29",
+                    "name": "Update"
+                }
+            ]
+        },
+        {
+            "name": "prakerja-session-5",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:9001/products",
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\":\"baju\",\n  \"price\":\"5000\"\n}"
+                        }
+                    },
+                    "id": "rester-22",
+                    "name": "CreateProducts"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:9001/products?id=1",
+                        "method": "DELETE",
+                        "header": []
+                    },
+                    "id": "rester-26",
+                    "name": "DeleteProducts"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:9001/products",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-21",
+                    "name": "GetProducts"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:9001/products?id=1",
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\":\"baju Satu\",\n  \"price\":\"80000\"\n}"
+                        }
+                    },
+                    "id": "rester-25",
+                    "name": "UpdateProducts"
+                }
+            ]
+        },
+        {
+            "name": "prakerja-session-6",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8001/products",
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n \"name\":\"baju\",\n \"price\": 77\n }"
+                        }
+                    },
+                    "id": "rester-36",
+                    "name": "CreateProducts"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8001/products",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-35",
+                    "name": "GetProducts"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8001/",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-38",
+                    "name": "Halo"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8001/products/2",
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n \"name\":\"mukh\",\n \"price\":8888\n }"
+                        }
+                    },
+                    "id": "rester-37",
+                    "name": "UpdateProducts"
+                }
+            ]
+        },
+        {
+            "name": "prakerja-session-7",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8001/products",
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\"name\":\"Baju renang\",\n\"price\":999\n}"
+                        }
+                    },
+                    "id": "rester-40",
+                    "name": "CreateProduct"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8001/products/3",
+                        "method": "DELETE",
+                        "header": []
+                    },
+                    "id": "rester-41",
+                    "name": "DeleteProduct"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8001/products",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-39",
+                    "name": "GetProduct"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8001/products/1",
+                        "method": "PUT",
+                        "header": []
+                    },
+                    "id": "rester-42",
+                    "name": "UpdateProduct"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8001/users/login",
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n \"email\":\"yodharisah@gmail.com\",\n \"password\":\"yodharishang29\"\n }"
+                        }
+                    },
+                    "id": "rester-44",
+                    "name": "UserLogin"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8001/users/register",
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n \"email\":\"yodharisah@gmail.com\",\n \"password\":\"yodharishang29\"\n }"
+                        }
+                    },
+                    "id": "rester-43",
+                    "name": "UserRegister"
+                }
+            ]
+        },
+        {
+            "name": "Products",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/product",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTUyMDgyNDcsInVzZXJfaWQiOjEsInVzZXJuYW1lIjoianVyeTIifQ.HtS8G606XtfzuRdb8PjWDMlovvf22_cykY-4qATJ2T8"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Cambures\",\n    \"description\": \"Fruto amarillo\",\n    \"amount\": 1\n}"
+                        }
+                    },
+                    "id": "rester-7",
+                    "name": "Create product"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/product",
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Cambures\",\n    \"description\": \"Fruto amarillo\",\n    \"amount\": 1\n}"
+                        }
+                    },
+                    "id": "rester-13",
+                    "name": "Create product"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/product/12",
+                        "method": "DELETE",
+                        "header": []
+                    },
+                    "id": "rester-8",
+                    "name": "Delete a product"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/product/12",
+                        "method": "DELETE",
+                        "header": []
+                    },
+                    "id": "rester-14",
+                    "name": "Delete a product"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/product",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-5",
+                    "name": "Get all products"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/product",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-11",
+                    "name": "Get all products"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/product/3",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-6",
+                    "name": "Get product"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/product/3",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-12",
+                    "name": "Get product"
+                }
+            ]
+        },
+        {
+            "name": "todo",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:8000",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-23",
+                    "name": "get"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:8000",
+                        "method": "POST",
+                        "header": []
+                    },
+                    "id": "rester-24",
+                    "name": "post"
+                }
+            ]
+        },
+        {
+            "name": "UK-PRAKERJA",
+            "item": [
+                {
+                    "name": "Photos",
+                    "item": [
+                        {
+                            "request": {
+                                "url": "http://localhost:8000/photos",
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Authorization",
+                                        "value": "    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11a2hhcm9tZGV2QGdtYWlsLmNvbSIsImlkIjoxfQ.NbutgGrIdNbx1j-31XEqIo2R5d_x8AZPwR5qOr8wuew"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"title\":\"bahagia\",\n    \"caption\":\"aku dan keluarga\",\n    \"photo_url\":\"https://mukharomdev.github.io/mukharomdev/_static/mukharomdev.jpg\"\n}"
+                                }
+                            },
+                            "id": "rester-49",
+                            "name": "PhotosCreate"
+                        },
+                        {
+                            "request": {
+                                "url": "http://localhost:8000/photos",
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Authorization",
+                                        "value": "    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11a2hhcm9tZGV2QGdtYWlsLmNvbSIsImlkIjoxfQ.NbutgGrIdNbx1j-31XEqIo2R5d_x8AZPwR5qOr8wuew"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ]
+                            },
+                            "id": "rester-50",
+                            "name": "PhotosGetAll"
+                        }
+                    ]
+                },
+                {
+                    "name": "Users",
+                    "item": [
+                        {
+                            "request": {
+                                "url": "http://localhost:8000/users",
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Authorization",
+                                        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11a2hhcm9tZGV2QGdtYWlsLmNvbSIsImlkIjoxfQ.NbutgGrIdNbx1j-31XEqIo2R5d_x8AZPwR5qOr8wuew"
+                                    }
+                                ]
+                            },
+                            "id": "rester-47",
+                            "name": "UserDelete"
+                        },
+                        {
+                            "request": {
+                                "url": "http://localhost:8000/users/login",
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n \n \"email\":\"mukharomdev@gmail.com\",\n \"password\":\"yodharishang\"\n \n }"
+                                }
+                            },
+                            "id": "rester-46",
+                            "name": "UserLogin"
+                        },
+                        {
+                            "request": {
+                                "url": "http://localhost:8000/users/register",
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n \"age\": 38,\n \"email\":\"mukharomdev@gmail.com\",\n \"password\":\"yodharishang\",\n \"username\":\"mukharomdev\"\n }"
+                                }
+                            },
+                            "id": "rester-48",
+                            "name": "UserRegister"
+                        },
+                        {
+                            "request": {
+                                "url": "http://localhost:8000/users/2",
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Authorization",
+                                        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11a2hhcm9tZGV2QGdtYWlsLmNvbSIsImlkIjoyfQ.AgwVCnu6EsVrpwXDrJle4hq4ad7YICCrm1zIsgEKCfc"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n \"email\":\"mukharomdev@gmail.com\",\n \"username\":\"mukharomdev29\"\n }"
+                                }
+                            },
+                            "id": "rester-45",
+                            "name": "UserUpdate"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User",
+            "item": [
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/user",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"jury2\",\n    \"email\": \"jury2@gmail.com\",\n    \"password\": \"12345678\"\n}"
+                        }
+                    },
+                    "id": "rester-16",
+                    "name": "Create user"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/user/25",
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"password\":\"12345678\"\n}"
+                        }
+                    },
+                    "id": "rester-17",
+                    "name": "Delete user"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/user/1",
+                        "method": "GET",
+                        "header": []
+                    },
+                    "id": "rester-19",
+                    "name": "Get user"
+                },
+                {
+                    "request": {
+                        "url": "http://localhost:3000/api/user/22",
+                        "method": "PATCH",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"names\":\"Nombres de usuario2\"\n}"
+                        }
+                    },
+                    "id": "rester-18",
+                    "name": "Update user name"
+                }
+            ]
+        }
+    ]
+}
